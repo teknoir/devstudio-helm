@@ -1,6 +1,6 @@
 # Devstudio container configuration
 image:
-  repository: gcr.io/teknoir/devstudio:latest
+  repository: gcr.io/teknoir/devstudio
   tag: latest
   pullPolicy: Always
 
