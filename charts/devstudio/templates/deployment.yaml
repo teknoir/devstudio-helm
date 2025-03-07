@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devstudio
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: devstudio
+  annotations:
+    {{- toYaml $.Values.annotations | nindent 4 }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: devstudio
+  template:
+    metadata:
+      labels:
+        app: devstudio
+      annotations:
+        checksum/settings: {{ include (print $.Template.BasePath "/configmap_settings.yaml") $ | sha256sum }}
+        {{- toYaml $.Values.annotations | nindent 8 }}
+    spec:
+      initContainers:
+        - name: change-ownership-container
+          image: busybox
+          command: [ "/bin/chown","-R","1000:1000", "/data" ]
+          securityContext:
+            runAsUser: 0
+            privileged: true
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      containers:
+        - name: devstudio
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http-devstudio
+              containerPort: 1880
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+          volumeMounts:
+            - name: settings
+              mountPath: /node_red_data/settings.js
+              subPath: settings.js
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: settings
+          configMap:
+              name: devstudio-settings
+        - name: data
+          hostPath:
+            path: /opt/teknoir/devstudio
+            type: DirectoryOrCreate

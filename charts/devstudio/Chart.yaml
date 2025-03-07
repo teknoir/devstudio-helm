@@ -1,0 +1,8 @@
+apiVersion: v2
+name: devstudio
+description: A Helm chart for Teknoir Devstudio
+
+
+type: application
+version: 0.0.1-rc1
+appVersion: "4.0.2"

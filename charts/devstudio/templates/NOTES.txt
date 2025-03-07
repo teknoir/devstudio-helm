@@ -1,0 +1,3 @@
+{{- range .Values.instances }}
+* A Devstudio is installed in the namespace: {{ $.Release.Namespace }} as {{ .name }}
+{{- end }}

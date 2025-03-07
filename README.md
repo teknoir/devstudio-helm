@@ -1,1 +1,1 @@
-# devstudio-helm
+charts/devstudio/README.md
