@@ -23,6 +23,8 @@ spec:
         checksum/settings: {{ include (print $.Template.BasePath "/configmap_settings.yaml") $ | sha256sum }}
         {{- toYaml $.Values.annotations | nindent 8 }}
     spec:
+      nodeSelector:
+        {{- toYaml $.Values.nodeSelector | nindent 8 }}
       initContainers:
         - name: change-ownership-container
           image: busybox
