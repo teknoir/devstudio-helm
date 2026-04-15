@@ -1,7 +1,7 @@
 # Devstudio container configuration
 image:
-  repository: gcr.io/teknoir/devstudio
-  tag: latest
+  repository: ghcr.io/teknoir/devstudio-app
+  tag: v4.1.3-22-ros2-jazzy
   pullPolicy: Always
 
 # Resource requests and limits
