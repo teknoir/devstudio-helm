@@ -4,6 +4,10 @@ image:
   tag: v4.1.3-22-ros2-jazzy
   pullPolicy: Always
 
+# Image pull secrets
+imagePullSecrets: []
+# - name: teknoir-registry
+
 # Resource requests and limits
 resources:
   requests:
