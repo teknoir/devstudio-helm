@@ -3,6 +3,16 @@ entries:
   devstudio:
   - apiVersion: v2
     appVersion: 4.0.2
+    created: "2026-06-09T18:56:03.619664734Z"
+    description: A Helm chart for Teknoir Devstudio
+    digest: f8e243a164e4b41d619010eff69d7edadf0414eb0e9823c9b7968e21b1adff43
+    name: devstudio
+    type: application
+    urls:
+    - https://github.com/teknoir/devstudio-helm/releases/download/devstudio-0.0.5-beta/devstudio-0.0.5-beta.tgz
+    version: 0.0.5-beta
+  - apiVersion: v2
+    appVersion: 4.0.2
     created: "2026-04-15T13:14:14.669935773Z"
     description: A Helm chart for Teknoir Devstudio
     digest: 2d38485a37acde8ae8a2f912cbc6cfb3549899d09fdea33064629d256e0b6ba8
@@ -51,4 +61,4 @@ entries:
     urls:
     - https://github.com/teknoir/devstudio-helm/releases/download/devstudio-0.0.1-rc2/devstudio-0.0.1-rc2.tgz
     version: 0.0.1-rc2
-generated: "2026-04-15T13:14:14.669956702Z"
+generated: "2026-06-09T18:56:03.619693047Z"
