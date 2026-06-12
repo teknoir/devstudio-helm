@@ -8,7 +8,6 @@ metadata:
   description: The Teknoir DevStudio HelmChart
   annotations:
     'github.com/project-slug': teknoir/devstudio-helm
-    'teknoir.org/helmchart': teknoir.github.io/devstudio-helm
     'teknoir.org/helm-registry': teknoir.github.io/devstudio-helm
     'teknoir.org/helmchart': devstudio
 spec:
