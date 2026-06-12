@@ -17,3 +17,7 @@ spec:
   lifecycle: production
   dependsOn:
     - component:teknoir/ghcr.io.teknoir.devstudio-app
+  registry: teknoir.github.io/devstudio-helm
+  helmchart: devstudio
+  versions:
+    - 0.0.0-dds-beta.6
