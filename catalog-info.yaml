@@ -1,0 +1,20 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  title: Devstudio HelmChart
+  name: devstudio-helm
+  namespace: teknoir
+  description: The Teknoir DevStudio HelmChart
+  annotations:
+    'github.com/project-slug': teknoir/devstudio-helm
+    'teknoir.org/helmchart': teknoir.github.io/devstudio-helm
+    'teknoir.org/helm-registry': teknoir.github.io/devstudio-helm
+    'teknoir.org/helmchart': devstudio
+spec:
+  type: helmchart
+  owner: group:teknoir/public
+  system: system:teknoir/core
+  lifecycle: production
+  dependsOn:
+    - component:teknoir/ghcr.io.teknoir.devstudio-app
