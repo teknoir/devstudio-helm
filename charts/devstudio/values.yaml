@@ -1,7 +1,8 @@
 # Devstudio container configuration
 image:
   repository: ghcr.io/teknoir/devstudio-app
-  tag: v4.1.3-22-ros2-jazzy
+  # Node-RED 5.0.10 on Node 24 (devstudio-app main 90007cca), amd64 + arm64, pinned by digest.
+  tag: sha-90007cca@sha256:9fc545f018dba7f3b34b584a546070d9011ea1aafaf42e8fbb43b58e1285e7e3
   pullPolicy: Always
 
 # Image pull secrets
@@ -313,6 +314,11 @@ devstudioSettings: |
       /** show or hide runtime stop/start options in the node-red editor. Must be set to `false` to hide */
       ui: false,
     },
+    /** Telemetry (Node-RED's update check). Set explicitly so the editor does not open its "Enable Update
+     * Notifications" dialog over the editor on first load; devices often have no internet anyway. */
+    telemetry: {
+      enabled: false,
+    },
     /** Configure the logging output */
     logging: {
       /** Only console logging is currently supported */
@@ -430,7 +436,9 @@ devstudioSettings: |
       },
   
       projects: {
-        /** To enable the Projects feature, set this value to true */
+        /** To enable the Projects feature, set this value to true. Off: with it on, Node-RED opens its
+         * "introduced projects" dialog over the editor on every load until a project exists
+         * ("Not right now" is not remembered). */
         enabled: false,
         workflow: {
           /** Set the default projects workflow mode.
@@ -455,7 +463,7 @@ devstudioSettings: |
            * packages/node_modules/@node-red/editor-client/src/vendor/monaco/dist/theme
            * e.g. "tomorrow-night", "upstream-sunburst", "github", "my-theme"
            */
-          // theme: "vs",
+          theme: "forge-dark", // dark Monaco to match the Teknoir theme
           /** other overrides can be set e.g. fontSize, fontFamily, fontLigatures etc.
            * for the full list, see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneEditorConstructionOptions.html
            */
